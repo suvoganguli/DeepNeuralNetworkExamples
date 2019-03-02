@@ -8,13 +8,11 @@ class DataLoader():
     def __init__(self, filename, split, cols):
         dataframe = pd.read_csv(filename)
         i_split = int(len(dataframe) * split)
-
-        self.data_train = dataframe.get(cols).values[:i_split]
-        self.data_test  = dataframe.get(cols).values[i_split:]
+        self.data_train = dataframe.get(cols).values
+        self.data_test  = self.data_train
         self.len_train  = len(self.data_train)
         self.len_test   = len(self.data_test)
         self.len_train_windows = None
-        print(self.len_train)
 
 
     def get_test_data(self, seq_len, normalise):
